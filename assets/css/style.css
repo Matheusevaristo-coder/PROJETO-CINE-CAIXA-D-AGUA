@@ -1,0 +1,253 @@
+/* RESET GLOBAL */
+/* Define estilo padrão para todos os elementos e previne inconsistências entre navegadores */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ESTILO GLOBAL */
+body {
+  font-family: 'Arial', sans-serif; /* Fonte legível e universal */
+  background-color: #000;          /* Fundo padrão preto */
+  color: #fff;                     /* Texto branco para contraste */
+  line-height: 1.6;                /* Boa espaçabilidade entre linhas */
+}
+
+/* CLASSES PARA MODOS (CLARO/ESCURO) */
+.dark-mode {
+  background-color: #fff;          /* Fundo branco para modo claro */
+  color: #000;                     /* Texto preto para contraste */
+}
+
+/* BOTÃO DE ALTERNÂNCIA DO MODO ESCURO */
+.dark-mode-btn {
+  padding: 8px 15px;
+  border: none;
+  background-color: #007bff;       /* Azul chamativo */
+  color: #fff;                     /* Texto branco */
+  border-radius: 5px;
+  cursor: pointer;                 /* Indica interatividade */
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease; /* Efeito suave para hover */
+}
+
+.dark-mode-btn:hover {
+  background-color: #0056b3;       /* Azul mais escuro no hover */
+}
+
+/* INTERRUPTOR MODO ESCURO */
+.dark-mode-toggle {
+  display: flex;
+  flex-direction: column; /* Posiciona os elementos verticalmente */
+  align-items: center;    /* Centraliza o texto e o interruptor no eixo horizontal */
+  gap: 5px;               /* Espaço entre o texto e o interruptor */
+  color: #fff;            /* Mantém o texto branco */
+  font-size: 1rem;        /* Tamanho da fonte do texto */
+  margin: 0 15px;        
+}
+.dark-mode-toggle span {
+  font-weight: bold;               /* Destaque para o texto */
+}
+/* SWITCH ESTILIZADO */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;                     /* Largura do switch */
+  height: 25px;                    /* Altura do switch */
+}
+
+.switch input {
+  opacity: 0;                      /* Esconde o checkbox padrão */
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;          /* Cor padrão do slider */
+  transition: 0.4s;                /* Transição suave */
+  border-radius: 25px;             /* Borda arredondada */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 19px;
+  width: 19px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;         /* Cor do círculo no slider */
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #007bff;       /* Cor do slider quando ligado */
+}
+
+input:checked + .slider:before {
+  transform: translateX(25px);     /* Move o círculo para indicar o estado ligado */
+}
+
+/* HEADER PERSONALIZADO (NAVBAR) */
+.custom-navbar {
+  display: flex;
+  flex-wrap: wrap;                 /* Ajusta elementos em telas menores */
+  align-items: center;             /* Centraliza verticalmente */
+  justify-content: space-between;  /* Distribui itens horizontalmente */
+  background: linear-gradient(90deg, #0668f1, #ff0808); /* Gradiente vermelho/azul */
+  padding: 15px 20px;
+  border-bottom: 1px solid #ffffff;
+  position: sticky;                /* Fixa no topo da página */
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Adiciona profundidade */
+}
+
+/* ÁREAS DO HEADER */
+.custom-navbar .left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;     /* Alinha logo à esquerda */
+}
+
+.custom-navbar .center {
+  flex: 2;                         /* Mais espaço para barra de pesquisa */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-navbar .right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;                       /* Espaço entre itens na área direita */
+}
+
+/* LOGO */
+.logo img {
+  height: 50px;                    /* Tamanho fixo da logo */
+  transition: transform 0.3s ease; /* Efeito suave ao hover */
+}
+
+.logo img:hover {
+  transform: scale(1.05);          /* Leve aumento no hover */
+}
+
+/* MENU DE NAVEGAÇÃO */
+.custom-navbar nav ul {
+  list-style: none;                /* Remove os marcadores padrão */
+  display: flex;
+  align-items: center;
+  gap: 20px;                       /* Espaço entre os links */
+}
+
+.custom-navbar nav ul li a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;           /* Remove sublinhado dos links */
+  color: #fff;                     /* Cor padrão dos links */
+  font-size: 1.1rem;
+  position: relative;
+  transition: transform 0.3s ease, color 0.3s ease; /* Efeitos ao hover */
+}
+
+.custom-navbar nav ul li a:hover {
+  color: #ffffff;                  /* Mantém o texto branco no hover */
+  transform: translateY(-3px) scale(1.08); /* Animação leve ao hover */
+}
+
+/* Pseudo-elemento para sublinhado animado */
+.custom-navbar nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 50%;
+  background-color: #ffffff;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.custom-navbar nav ul li a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* BARRA DE PESQUISA */
+.search-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-container form {
+  display: flex;
+  align-items: center;
+}
+
+.search-container input[type="search"] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-container button {
+  padding: 8px 12px;
+  background-color: #444;
+  border: none;
+  color: #fff;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: #555;
+}
+
+/* RODAPÉ */
+footer {
+  background-color: #111;
+  padding: 20px;
+  text-align: center;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .custom-navbar {
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza todos os itens em telas menores */
+  }
+
+  .custom-navbar .left {
+    order: 1; /* A logo fica na primeira linha */
+    flex: 100%; /* Ocupa toda a largura disponível */
+    justify-content: center;
+  }
+
+  .custom-navbar .center {
+    order: 2; /* Barra de pesquisa na segunda linha */
+    flex: 100%;
+    margin-top: 10px;
+  }
+
+  .custom-navbar .right {
+    order: 3; /* Botão e navegação na última linha */
+    flex: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}

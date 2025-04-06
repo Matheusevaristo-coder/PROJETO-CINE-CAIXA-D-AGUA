@@ -1,0 +1,273 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo global */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000; /* Fundo preto */
+    color: #fff; /* Texto branco */
+    line-height: 1.6;
+}
+
+/* Painel Administrativo */
+.painel-administrativo {
+    padding: 20px;
+    text-align: center;
+}
+
+.painel-administrativo h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.painel-administrativo p {
+    margin-bottom: 20px;
+    color: #ccc;
+    font-size: 1rem;
+}
+
+/* Container de cards */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Estilo de cada card */
+.card {
+    width: 250px;
+    background: #fff; /* Fundo branco do card */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito de hover */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Sombra mais intensa */
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover; /* Garante que a imagem se ajuste */
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333; /* Cor do título */
+}
+
+.card-classification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /* Espaçamento entre imagem e texto */
+    font-size: 1rem;
+    color: #666; /* Texto cinza */
+}
+
+.card-classification img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Botões de ação nos cards */
+.card-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.card-actions button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #007bff; /* Azul padrão */
+    transition: background-color 0.3s ease;
+}
+
+.card-actions button:hover {
+    background-color: #0056b3; /* Azul escuro no hover */
+}
+
+/* Botão para adicionar cards */
+.add-card-btn {
+    padding: 10px 20px;
+    background-color: #28a745; /* Verde para ação positiva */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.add-card-btn:hover {
+    background-color: #218838; /* Verde mais escuro no hover */
+}
+
+/* Formulário de criação de card inline */
+.card-form-inline {
+    display: flex; /* Exibe os elementos em linha */
+    align-items: center; /* Alinha os itens verticalmente */
+    gap: 15px; /* Espaçamento entre os campos */
+    margin: 20px 0; /* Margem superior e inferior */
+    padding: 10px;
+    background-color: #f8f9fa; /* Fundo claro */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.card-form-inline label {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.card-form-inline input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: auto; /* Mantém o tamanho automático */
+}
+
+.card-form-inline input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0px 2px 5px rgba(0, 123, 255, 0.4);
+}
+
+.card-form-inline .add-card-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card-form-inline .add-card-btn:hover {
+    background-color: #218838;
+}
+
+.card-form-inline .add-card-btn:active {
+    background-color: #1e7e34;
+}
+
+/* Modal para edição */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro semi-transparente */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden; /* Evitar barras de rolagem */
+}
+
+.modal.active {
+    display: flex; /* Exibe o modal quando ativo */
+}
+
+.modal .card-form {
+    display: flex;
+    flex-direction: column; /* Mantém os campos alinhados verticalmente */
+    gap: 20px; /* Espaçamento entre os campos */
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 350px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal .card-form h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.modal .card-form input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%; /* Campos ocupam toda a largura */
+}
+
+.modal .card-form input:focus {
+    border-color: #007bff;
+    box-shadow: 0px 2px 5px rgba(0, 123, 255, 0.4);
+}
+
+.modal .card-form button {
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal .card-form #close-modal {
+    background-color: #dc3545;
+}
+
+.modal .card-form #close-modal:hover {
+    background-color: #c82333;
+}
+
+.modal .card-form button[type="submit"] {
+    background-color: #28a745;
+}
+
+.modal .card-form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column; /* Exibição em coluna para telas menores */
+        align-items: center;
+    }
+
+    .add-card-btn {
+        width: 90%; /* Botão ocupa maior parte da largura em telas menores */
+    }
+
+    .card-form-inline {
+        width: 90%; /* Maior ocupação para dispositivos menores */
+    }
+
+    .modal .card-form {
+        width: 90%; /* Modal ocupa quase toda a largura em telas menores */
+    }
+}
